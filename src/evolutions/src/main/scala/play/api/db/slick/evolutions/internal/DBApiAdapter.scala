@@ -1,20 +1,16 @@
 package play.api.db.slick.evolutions.internal
 
-import java.sql.Connection
-import java.sql.SQLException
-
+import java.sql.{Connection, SQLException}
 import javax.inject.Inject
 import javax.sql.DataSource
+
 import play.api.Logger
 import play.api.db.DBApi
-import play.api.db.{ Database => PlayDatabase }
-import play.api.db.slick.DbName
-import play.api.db.slick.IssueTracker
-import play.api.db.slick.SlickApi
-import slick.backend.DatabaseConfig
-import slick.driver.JdbcProfile
-import slick.jdbc.DataSourceJdbcDataSource
+import play.api.db.slick.{DbName, IssueTracker, SlickApi}
+import play.api.db.{Database => PlayDatabase}
+import slick.basic.DatabaseConfig
 import slick.jdbc.hikaricp.HikariCPJdbcDataSource
+import slick.jdbc.{DataSourceJdbcDataSource, JdbcProfile}
 
 private[evolutions] class DBApiAdapter @Inject() (slickApi: SlickApi) extends DBApi {
   private lazy val databasesByName: Map[DbName, PlayDatabase] = slickApi.dbConfigs[JdbcProfile]().map {

@@ -1,11 +1,9 @@
 package play.api.db.slick
 
 import org.specs2.mutable.Specification
-
-import play.api.Configuration
-import play.api.PlayException
+import play.api.{Configuration, PlayException}
 import play.api.inject.guice.GuiceApplicationBuilder
-import slick.profile.BasicProfile
+import slick.basic.BasicProfile
 
 class SlickApiSpec extends Specification {
   trait SUT {

@@ -1,9 +1,6 @@
 package play.api.db.slick.util
 
-import scala.collection.JavaConverters.asScalaBufferConverter
-
 import org.specs2.specification.Scope
-
 import play.api.Configuration
 
 trait WithReferenceConfig extends Scope {

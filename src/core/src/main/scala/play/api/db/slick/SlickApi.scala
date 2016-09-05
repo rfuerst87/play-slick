@@ -1,25 +1,16 @@
 package play.api.db.slick
 
-import scala.collection.immutable.Seq
-import scala.concurrent.Future
-import scala.util.Failure
-import scala.util.Success
-import scala.util.Try
-import scala.util.control.NonFatal
-
-import com.typesafe.config.Config
-
 import javax.inject.Inject
 
-import play.api.Configuration
-import play.api.Environment
-import play.api.Logger
-import play.api.PlayConfig
-import play.api.PlayException
+import com.typesafe.config.Config
+import play.api._
 import play.api.inject.ApplicationLifecycle
+import slick.basic.{BasicProfile, DatabaseConfig}
 
-import slick.backend.DatabaseConfig
-import slick.profile.BasicProfile
+import scala.collection.immutable.Seq
+import scala.concurrent.Future
+import scala.util.{Failure, Success, Try}
+import scala.util.control.NonFatal
 
 trait SlickApi {
   /** Returns all database configs, for all databases defined in the loaded application's configuration.

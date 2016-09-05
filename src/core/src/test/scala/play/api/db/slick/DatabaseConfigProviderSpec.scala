@@ -1,10 +1,9 @@
 package play.api.db.slick
 
 import org.specs2.mutable.Specification
-
-import play.api.{Application, Mode}
 import play.api.inject.guice.GuiceApplicationBuilder
-import slick.profile.BasicProfile
+import play.api.{Application, Mode}
+import slick.basic.BasicProfile
 
 class DatabaseConfigProviderSpec extends Specification {
 
@@ -23,14 +22,14 @@ class DatabaseConfigProviderSpec extends Specification {
   "DatabaseConfigProvider" should {
     "return the configured slick driver for the given database" in withApp { implicit app =>
       val config = DatabaseConfigProvider.get[BasicProfile]("somedb")
-      val driver = config.driver
-      driver must equalTo(_root_.slick.driver.H2Driver)
+      val profile = config.profile
+      profile must equalTo(_root_.slick.jdbc.H2Profile)
     }
 
     "return the configured driver for the default database when db name is not specified" in withApp { implicit app =>
       val config = DatabaseConfigProvider.get[BasicProfile]
-      val driver = config.driver
-      driver must equalTo(_root_.slick.driver.MySQLDriver)
+      val profile = config.profile
+      profile must equalTo(_root_.slick.jdbc.MySQLProfile)
     }
 
     "throw when accessing the db if an invalid jdbc driver is configured" in withApp { implicit app =>

@@ -2,10 +2,8 @@ package play.api.db.slick
 
 import org.specs2.matcher.ValueCheck.typedValueCheck
 import org.specs2.mutable.Specification
-
 import play.api.db.slick.util.WithReferenceConfig
-import play.api.inject.BindingKey
-import play.api.inject.QualifierInstance
+import play.api.inject.{BindingKey, QualifierInstance}
 import play.api.inject.guice.GuiceApplicationBuilder
 import play.db.NamedDatabaseImpl
 

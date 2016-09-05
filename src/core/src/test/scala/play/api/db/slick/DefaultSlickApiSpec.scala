@@ -2,12 +2,9 @@ package play.api.db.slick
 
 import org.specs2.mock.Mockito
 import org.specs2.mutable.Specification
-
-import play.api.PlayException
-import play.api.inject.ApplicationLifecycle
-import play.api.inject.DefaultApplicationLifecycle
+import play.api.inject.{ApplicationLifecycle, DefaultApplicationLifecycle}
 import play.api.inject.guice.GuiceApplicationBuilder
-import slick.profile.BasicProfile
+import slick.basic.BasicProfile
 
 class DefaultSlickApiSpec extends Specification with Mockito { self =>
   // A new injector should be created to ensure each test is independent of each other

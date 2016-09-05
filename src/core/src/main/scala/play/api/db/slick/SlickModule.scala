@@ -1,25 +1,13 @@
 package play.api.db.slick
 
-import scala.collection.immutable.Seq
+import javax.inject.{Inject, Provider, Singleton}
 
-import javax.inject.Inject
-import javax.inject.Provider
-import javax.inject.Singleton
-
-import play.api.Configuration
-import play.api.Environment
-import play.api.Mode
-import play.api.PlayException
-import play.api.inject.ApplicationLifecycle
-import play.api.inject.Binding
-import play.api.inject.BindingKey
-import play.api.inject.Module
-import play.api.libs.Files
+import play.api.inject.{ApplicationLifecycle, Binding, BindingKey, Module}
+import play.api.{Configuration, Environment}
 import play.db.NamedDatabaseImpl
+import slick.basic.{BasicProfile, DatabaseConfig}
 
-import slick.backend.DatabaseConfig
-import slick.driver.JdbcProfile
-import slick.profile.BasicProfile
+import scala.collection.immutable.Seq
 
 object SlickModule {
   /** path in the **reference.conf** to obtain the path under which databases are configured.*/

@@ -1,7 +1,7 @@
 package play.api.db.slick
 
-import slick.profile.BasicProfile
-import slick.backend.DatabaseConfig
+import slick.basic.{BasicProfile, DatabaseConfig}
+
 
 /** Generic interface for a provider of a `DatabaseConfig` instance. A `DatabaseConfig` is Slick type
   * that bundles a database and driver.
@@ -138,8 +138,11 @@ object DatabaseConfigProvider {
 trait HasDatabaseConfig[P <: BasicProfile] {
   /** The Slick database configuration. */
   protected val dbConfig: DatabaseConfig[P] // field is declared as a val because we want a stable identifier.
+  /** The Slick profile extracted from `dbConfig`. */
+  protected final lazy val profile: P = dbConfig.profile // field is lazy to avoid early initializer problems.
   /** The Slick driver extracted from `dbConfig`. */
-  protected final lazy val driver: P = dbConfig.driver // field is lazy to avoid early initializer problems.
+  @deprecated("Use `profile` instead.", "2.1.0")
+  protected final lazy val driver: P = profile // field is lazy to avoid early initializer problems.
   /** The Slick database extracted from `dbConfig`. */
   protected final def db: P#Backend#Database = dbConfig.db
 }
